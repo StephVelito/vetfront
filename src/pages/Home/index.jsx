@@ -60,16 +60,6 @@ function Home() {
     await getTasks();
   }
 
-  {
-    /*}	async function updateTask2(id, type) {
-		const body =
-			type === "done"
-				? { doneAt: new Date() }
-				: { deletedAt: new Date() };
-		await update(id, body);
-		await getTasks();
-	}*/
-  }
 
   async function destroyTask(id) {
     await destroy(id);

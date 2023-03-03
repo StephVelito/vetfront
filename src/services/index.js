@@ -85,7 +85,7 @@ export const post = async (body) => {
 
 export const postUser = async (user) => {
   try {
-    const response = await fetch(urlUsers, {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -93,6 +93,7 @@ export const postUser = async (user) => {
       body: JSON.stringify(user),
     });
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

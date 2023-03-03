@@ -12,7 +12,6 @@ import {
   import { Link } from "react-router-dom";
   
   import PetsIcon from "@mui/icons-material/Pets";
-  import { UserModel } from "../../models/UserModel";
   import { postUser } from "../../services";
   import { useNavigate } from "react-router-dom";
   import "./index.css";
@@ -23,16 +22,17 @@ import {
 	const handleSubmit = async (event) => {
 	  event.preventDefault();
 	  const data = new FormData(event.currentTarget);
-	  const newUser = new UserModel(
-		data.get("name"),
-		data.get("lastName"),
-		data.get("email"),
-		data.get("petname"),
-		data.get("petage"),
-		data.get("pet"),
-		data.get("distrito"),
-		data.get("password"),
-	  );
+	  const newUser = {
+		"nombre": data.get("name"),
+		"apellido": data.get("lastName"),
+		"correo": data.get("email"),
+		"petName": data.get("petname"),
+		"petAge": data.get("petage"),
+		"pet": data.get("pet"),
+		"distrito": data.get("distrito"),
+		"password": data.get("password")
+	  };
+	  console.log(newUser);
 	  await postUser(newUser);
 	  history("/login");
 	};

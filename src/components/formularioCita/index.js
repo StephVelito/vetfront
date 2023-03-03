@@ -81,7 +81,7 @@ function Form(props) {
         required
       ></input>
 
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-primary" type="submit"  variant="contained">
         Agregar
       </button>
     </form>

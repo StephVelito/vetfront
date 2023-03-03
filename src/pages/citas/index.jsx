@@ -11,8 +11,6 @@ import {
   import {Form} from "../../components"
 
 
-
-  
   
   function Registercite () {
 	const history = useNavigate();
