@@ -1,6 +1,6 @@
-const url = "http127.0.0.1:3000/registro";
+const url = "http://127.0.0.1:3000/registro";
 const urlUsers = "http://127.0.0.1:3000/login";
-const url2 = "https://638679fcd9b24b1be3d92521.mockapi.io/api/v1/medicalConsultation2";
+const url2 = "http://127.0.0.1:3000/Citas";
 
 
 
