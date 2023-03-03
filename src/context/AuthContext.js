@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { getUsers, getUsers2 } from "../services";
+import { postLogin, getUsers2 } from "../services";
 
 export const AuthContext = createContext();
 
@@ -20,13 +20,15 @@ export const AuthProvider = (props) => {
   );
 
   async function login(email, password) {
+    const body = { 
+      "correo": email,
+      "password": password
+  
+    }
     // Traemos a TODOS los usuarios de mockapi:
-    const usersDB = await getUsers();
+    const user = await postLogin(body);
     // Buscamos dentro de usersDB, el usuario con el email y password:
 
-    const user = usersDB.find(
-      (userDb) => userDb.email === email && userDb.pass === password
-    );
 
     if (!user) return false;
 

@@ -1,5 +1,5 @@
-const url = "https://63659f46046eddf1baf09724.mockapi.io/tasks";
-const urlUsers = "https://localhost:3000/login";
+const url = "http127.0.0.1:3000/registro";
+const urlUsers = "http://127.0.0.1:3000/login";
 const url2 = "https://638679fcd9b24b1be3d92521.mockapi.io/api/v1/medicalConsultation2";
 
 
@@ -10,13 +10,26 @@ const url2 = "https://638679fcd9b24b1be3d92521.mockapi.io/api/v1/medicalConsulta
 // DELETE: Eliminar
 export const getProfile = async () => {
 	try {
-		const response = await fetch("https://api.github.com/users/StephVelito");
+		const response = await fetch("http://127.0.0.1:3000/login");
 		const data = await response.json();
 		return data;
 	} catch (error) {
 		console.log("Error", error);
 	}
 };
+
+export const postLogin = async (body) => {
+  try {
+		const response = await fetch("http://127.0.0.1:3000/login",
+    { method: "post",
+      body: body});
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.log("Error", error);
+	}
+};
+
 
 export const get = async () => {
 	try {
