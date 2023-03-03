@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+#menu{
+
+  display: flex;
+ 
+  justify-content: space-between ;
+
+}
+
+#navi>h6{
+  font-family: 'Righteous', sans-serif;
+  color: black;
+  font-weight: bold;
+  width: auto;
+  padding-right: 7px;
+  padding-left: 7px;
+  color: rgba(25, 25, 25, 0.886);
+
+  border-radius: 20px;
+  letter-spacing: 2px;
+ 
+}
+
+#navi>h6:hover{
+  color: rgb(10, 211, 178);
+  letter-spacing: 2px;
+ -webkit-text-fill-color:rgb(10, 211, 178);
+background-color: azure;
+height: auto;
+border-radius: 20px;
+padding-right: 10px;
+padding-left: 10px;
+  transition: 0.5s;
+
+ 
+}
+
+#menu>li:hover{
+  border-bottom: 1px solid rgb(10, 211, 178);
+  padding-bottom: 2px;
+  transform: 0.5s;
+}
+
+
+
+@media (max-width:900px){
+  #navi>h6{
+    color:rgb(10, 211, 178);
+  }
+}
