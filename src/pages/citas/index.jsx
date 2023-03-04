@@ -26,10 +26,11 @@ function Registercite() {
 	  especialidad: "",
 	});
 	const handleSubmit = async (event) => {
+		console.log('send data');
 		event.preventDefault();
 		console.log(formData);
 		await postMedicalConsultation(formData);
-		navigate("/home");
+		navigate("/");
 	  };
 	
 	  const handleInputChange = (event) => {
@@ -56,7 +57,7 @@ function Registercite() {
 			<Typography component="h1" variant="h5">
 			  Reserva de cita
 			</Typography>
-			<Box component="form" noValidate handleSubmit={fetch} sx={{ mt: 3 }}>
+			<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
 			  <Grid container spacing={2}>
 				<Grid item xs={12} >
 				  <TextField
@@ -140,6 +141,8 @@ function Registercite() {
 					id="especialidad"
 					label="especialidad"
 					name="especialidad"
+					value={formData.especialidad}
+					onChange={handleInputChange}
 				  />
 				</Grid>
 	
@@ -149,7 +152,7 @@ function Registercite() {
 				fullWidth
 				variant="contained"
 				sx={{ mt: 3, mb: 2 }}
-			  ><Link to= "/"> Registrar Cita  </Link>
+			  > Registrar Cita 
 				
 			  </Button>
 			</Box>

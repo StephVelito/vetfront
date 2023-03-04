@@ -23,7 +23,6 @@ export const AuthProvider = (props) => {
     const body = { 
       "correo": email,
       "password": password
-  
     }
     // Traemos a TODOS los usuarios de mockapi:
     const user = await postLogin(body);

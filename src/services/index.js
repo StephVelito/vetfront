@@ -1,7 +1,7 @@
-const url = "http://127.0.0.1:3000/registro";
-const urlUsers = "http://127.0.0.1:3000/login";
-const url2 = "http://127.0.0.1:3000/Citas";
-const urlUpdate = "http://127.0.0.1:3000/usuarios";
+const url = "http://localhost:3000/registro";
+const urlUsers = "http://localhost:3000/login";
+const url2 = "http://localhost:3000/Citas";
+const urlUpdate = "http://localhost:3000/usuarios";
 
 
 // GET : Listar
@@ -10,7 +10,7 @@ const urlUpdate = "http://127.0.0.1:3000/usuarios";
 // DELETE: Eliminar
 export const getProfile = async () => {
 	try {
-		const response = await fetch("http://127.0.0.1:3000/login");
+		const response = await fetch(urlUsers);
 		const data = await response.json();
 		return data;
 	} catch (error) {
@@ -19,11 +19,16 @@ export const getProfile = async () => {
 };
 
 export const postLogin = async (body) => {
+  console.log(body);
   try {
-    
-		const response = await fetch("http://127.0.0.1:3000/login",
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+		const response = await fetch(urlUsers,
     { method: "post",
-      body: body});
+      headers: myHeaders,
+      body: JSON.stringify(body),
+      redirect: 'follow'
+    });
 		const data = await response.json();
 		return data;
 	} catch (error) {
@@ -126,12 +131,13 @@ export const getUsers2 = async () => {
 
 // id: Tarea
 
-export const updateProfile = async (id, body) => {
+export const updateProfile = async (id,token,body) => {
   try {
     const response = await fetch(`${urlUpdate}/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
+        "Authorization": "BEAR " + token
       },
       body: JSON.stringify(body),
     });
@@ -141,6 +147,24 @@ export const updateProfile = async (id, body) => {
     console.log(error);
   }
 };
+
+export const getUserIndividual = async (id,token) => {
+  try {
+    const response = await fetch(`${urlUpdate}/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": "BEAR " + token
+      }
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 export const update = async (id, body) => {
   try {
     const response = await fetch(`${url2}/${id}`, {
@@ -159,10 +183,13 @@ export const update = async (id, body) => {
 
 export const postMedicalConsultation = async (cite) => {
   try {
+    const token = JSON.parse(localStorage.getItem("user")) ?? {};
+    console.log(token);
     const response = await fetch(url2, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        "Authorization": "BEAR " + token.content
       },
       body: JSON.stringify(cite),
     });
