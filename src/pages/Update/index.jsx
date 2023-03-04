@@ -2,18 +2,18 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import { getProfile } from "../../services";
+import { getProfile, updateProfile } from "../../services";
 
 
 
-const Profile = () => {
-  const { user: userContext ,logouth } = useContext(AuthContext);
+const Update = () => {
+  const { user: userContext } = useContext(AuthContext);
 
 
   const [user, setUser] = useState(null);
 
   const fetchUser = async () => {
-    const response = await getProfile();
+    const response = await updateProfile();
 
     setUser({
       ...response,
@@ -35,7 +35,7 @@ const Profile = () => {
       <div className="d-flex justify-content-center mt-3">
         <div className="row">
           <div className="col-12">
-      
+            <h6 className="text-gray">Actualizar datos</h6>
           </div>
           <div className="col-12 mt-3">
             {user && (
@@ -47,7 +47,6 @@ const Profile = () => {
                     type="text"
                     className="form-control"
                     value={user.name}
-                    readOnly
                   />
                 </div>
                 <div className="col-6">
@@ -56,7 +55,7 @@ const Profile = () => {
                     type="text"
                     className="form-control"
                     value={user.lastName}
-                    readOnly
+
                   />
                 </div>
                 <div className="col-12 mt-3">
@@ -65,7 +64,7 @@ const Profile = () => {
                     type="text"
                     value={user.email}
                     className="form-control"
-                    readOnly
+
                   />
                 </div>
                 <div className="col-12 mt-3">
@@ -74,7 +73,7 @@ const Profile = () => {
                     type="text"
                     value={user.petname}
                     className="form-control"
-                    readOnly
+
                   />
                 </div>
                 <div className="col-12 mt-3">
@@ -83,7 +82,7 @@ const Profile = () => {
                     type="text"
                     className="form-control"
                     value={user.pet}
-                    readOnly
+
                   />
                 </div>
                 <div className="col-6 mt-3">
@@ -92,7 +91,7 @@ const Profile = () => {
                     type="text"
                     className="form-control"
                     value={user.petage}
-                    readOnly
+
                   />
                 </div>
                 
@@ -103,8 +102,11 @@ const Profile = () => {
                     type="text"
                     className="form-control"
                     value={user.distrito}
-                    readOnly
+
                   />
+                </div>
+                <div className="col-12 mt-3 d-flex gap-2">
+                  <button className="btn btn-primary"><Link to= "/cites"> Guardar </Link></button>
                 </div>
 
 
@@ -118,4 +120,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Update;

@@ -1,7 +1,7 @@
 const url = "http://127.0.0.1:3000/registro";
 const urlUsers = "http://127.0.0.1:3000/login";
 const url2 = "http://127.0.0.1:3000/Citas";
-
+const urlUpdate = "http://127.0.0.1:3000/usuarios";
 
 
 // GET : Listar
@@ -20,6 +20,7 @@ export const getProfile = async () => {
 
 export const postLogin = async (body) => {
   try {
+    
 		const response = await fetch("http://127.0.0.1:3000/login",
     { method: "post",
       body: body});
@@ -124,6 +125,22 @@ export const getUsers2 = async () => {
 };
 
 // id: Tarea
+
+export const updateProfile = async (id, body) => {
+  try {
+    const response = await fetch(`${urlUpdate}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const update = async (id, body) => {
   try {
     const response = await fetch(`${url2}/${id}`, {
@@ -140,34 +157,14 @@ export const update = async (id, body) => {
   }
 };
 
-
-
-export const update2 = async (id, body) => {
-  try {
-    const response = await fetch(`${url2}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-
-
-export const postMedicalConsultation = async (user) => {
+export const postMedicalConsultation = async (cite) => {
   try {
     const response = await fetch(url2, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(cite),
     });
     const data = await response.json();
     return data;
@@ -175,6 +172,22 @@ export const postMedicalConsultation = async (user) => {
     console.log(error);
   }
 };
+export const getMedicalConsultation = async (cite) => {
+  try {
+    const response = await fetch(url2, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 
 // Para la eliminar un registro unicamente necesito el id

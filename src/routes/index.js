@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Home2View,
   HomeView,
-  ProfileView,
+  UpdateView,
   LoginView,
   SignUpView,
   CiteView,
@@ -24,9 +24,7 @@ const Router = () => {
 
 
             <Route element={<MainLayout />}>
-              <Route path="/home" element={<HomeView />} />
-
-              <Route path="/perfil" element={<ProfileView />} />
+              <Route path="/update" element={<UpdateView />} />
               <Route path="/cites" element={<CiteView />} />
             </Route>
 			

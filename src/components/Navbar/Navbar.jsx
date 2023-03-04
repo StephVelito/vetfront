@@ -29,15 +29,11 @@ const Navbar =() => {
       <Button id="navi" className="nav-link active text-white" aria-current="page" component={Link} to="/"><h6>Inicio</h6></Button>
         </li>
         <li className="nav-item text-white ">
-          <Button id="navi" className="nav-link active text-white" aria-current="page" component={Link} to="/perfil"><h6>Perfil</h6></Button>
+          <Button id="navi" className="nav-link active text-white" aria-current="page" component={Link} to="/update"><h6>Actualizar datos</h6></Button>
         </li>
         <li className="nav-item text-white">
           <Button id="navi" className="nav-link active text-white" aria-current="page" component={Link} to="/cites"><h6>Reserva de citas</h6></Button>
         </li>
-        <li className="nav-item">
-          <Button id="navi" className="nav-link active text-white" aria-current="page" component={Link} to="/home"><h6>Mis citas</h6></Button>
-        </li>
-
         <li className="nav-item">
           <Button id="navi" className="nav-link active text-white" aria-current="page" component={Link} to="/login"><h6>Login</h6></Button>
         </li>
