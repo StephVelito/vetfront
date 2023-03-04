@@ -20,6 +20,7 @@ function Registercite() {
 	  name: "",
 	  email: "",
 	  fecha: "",
+	  hora: "",
 	  petname: "",
 	  petplace: "",
 	  especialidad: "",
@@ -84,7 +85,7 @@ function Registercite() {
 				  />
 				</Grid>
 	
-				<Grid item xs={12}>
+				<Grid item xs={6}>
 				  <TextField
 					required
 					fullWidth
@@ -92,6 +93,17 @@ function Registercite() {
 					label="fecha"
 					name="fecha"
 					value={formData.fecha}
+					onChange={handleInputChange}
+				  />
+				</Grid>
+				<Grid item xs={6}>
+				  <TextField
+					required
+					fullWidth
+					id="hora"
+					label="Hora"
+					name="hora"
+					value={formData.hora}
 					onChange={handleInputChange}
 				  />
 				</Grid>
